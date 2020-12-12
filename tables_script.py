@@ -9,7 +9,7 @@ current = os.getcwd()
 os.chdir(current)
 result = glob.glob('*.{}'.format('csv'))
 
-#RPara remover as colunas, é necessário fazer da primeira linha, o cabeçalho
+#Para remover as colunas, é necessário fazer da primeira linha, o cabeçalho
 for file in result:
     #transforma em Dataframe
     df = pd.read_csv(file)
