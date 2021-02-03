@@ -12,9 +12,9 @@ current = os.getcwd()
 os.chdir(current)
 result = glob.glob('*.{}'.format('csv'))
 
-dataSet = np.empty((0,18), str)
+dataSet = np.empty((0,19), str)
 
-firstLine = np.array(['id', 'class' 'pos_quali_0', 'pos_quali_1', 'pos_quali_2', 'pos_quali_3',
+firstLine = np.array(['id', 'class', 'pos_quali_0', 'pos_quali_1', 'pos_quali_2', 'pos_quali_3',
                                 'laps_quali_0', 'laps_quali_1', 'laps_quali_2', 'laps_quali_3', 
                                 'time_quali_0', 'time_quali_1', 'time_quali_2', 'time_quali_3', 
                                 'kph_quali_0', 'kph_quali_1', 'kph_quali_2', 'kph_quali_3', 'pos_race'], dtype=object)
@@ -56,7 +56,7 @@ for table in result:
         elif itemClass == "gte_am": itemClass = 4
 
         if itemNum not in dataSet[:,0]:
-                dataSet = np.append(dataSet, np.array([[itemNum, itemClass, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]], dtype=object), axis=0)
+                dataSet = np.append(dataSet, np.array([[itemNum, itemClass, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]], dtype=object), axis=0)
         
         y_coord = np.where(dataSet[:,0] == itemNum)
         x_coord = np.where(firstLine == "pos_"+event)
