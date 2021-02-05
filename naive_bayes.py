@@ -19,7 +19,7 @@ print(y)
 
 # Divide o dataset em um conjunto de treino e um de teste
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 9)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 # Codificar caracteres do dataset
 from sklearn.preprocessing import StandardScaler
@@ -31,14 +31,16 @@ X_test = sc.transform(X_test)
 #Realiza o treinamento com os conjuntos de treino
 from sklearn.naive_bayes import GaussianNB
 nv = GaussianNB()
-nv.fit(X_train,y_train)
+y_pred = nv.fit(X_train,y_train).predict(X_test)
 
 # Prediz o resultado dos conjuntos de teste
-y_pred = nv.predict(X_test)
+#y_pred = nv.predict(X_test)
 
 # Constroi a matriz de confusão
 from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
+print("y_pred: ", y_pred)
 ac = accuracy_score(y_test, y_pred)
 
+print("Matriz de confusão: \n", cm)
 print("Acuracia: ",ac)

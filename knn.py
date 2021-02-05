@@ -33,7 +33,7 @@ print("Valor de k: ", k)
 from sklearn.neighbors import KNeighborsClassifier
 #minowski com p=2 equivale à distância euclidiana 
 #minowski com p=2 equivale à distância de manhattan
-classifier = KNeighborsClassifier(n_neighbors = k, metric = 'minkowski', p = 1)
+classifier = KNeighborsClassifier(n_neighbors = k, metric = 'minkowski', p = 2)
 classifier.fit(X_train, y_train)
 
 # Prediz o resultado dos conjuntos de teste
@@ -42,6 +42,8 @@ y_pred = classifier.predict(X_test)
 # Constroi a matriz de confusão
 from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
+print("y_pred: ", y_pred)
 ac = accuracy_score(y_test, y_pred)
 
+print("Matriz de confusão: \n", cm)
 print("Acuracia: ",ac)
